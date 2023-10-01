@@ -16,6 +16,7 @@ def main_slam():
     ts = tic()
     rob_slam.SLAM()
     toc(ts, "Particle filter with "+str(N_pt)+" particles")
+    rob_slam.generateGIF()
 
     # Plot the trajectory
     if rob_slam.mode >= 1:

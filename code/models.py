@@ -8,6 +8,9 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
+import imageio
+import os
+
 from sensors import LiDAR, IMU, Encoder, Camera
 from pr2_utils import mapCorrelation, tic, toc
 
@@ -38,6 +41,7 @@ class Robot:
             self.camera = Camera(dataset)
             self.initMap(data["map_frames"][:,:,-1])
         self.alignSensors()
+        self.frame_idx = []
 
 
     def initMap(self, final_map=[]):
@@ -220,7 +224,7 @@ class Robot:
                         print("Time: ", self.lidar.stamps[li]-self.lidar.stamps[0], \
                               " | Robot state: ", c_state)
                         # Store the map frame
-                        self.showMap()
+                        self.showMap(int(li/100))
                         # self.getDisplayMap()
                         self.map_frames[:, :, int(li/100)] = self.disp_map
                 li += 1
@@ -325,7 +329,8 @@ class Robot:
         indOccup = (self.MAP['map'] > 1e-3)
         self.occup_map[indOccup] = 1
 
-    def showMap(self):
+    def showMap(self, t):
+        self.frame_idx.append(t)
         if self.mode <= 2:
             self.getDisplayMap()  # update the disp_map attribute
             plt.imshow(self.disp_map,cmap="gray",vmin=0, vmax=1)
@@ -334,7 +339,23 @@ class Robot:
             plt.imshow(np.flip(np.transpose(normalize(self.MAP['map']), axes=(1, 0, 2)), axis=0))
             plt.title("Texture map")
         plt.draw()
+        # Save the map for generating a gif later
+        plt.savefig(f'./img/img_{t}.png')
         plt.pause(0.01)
+
+    def generateGIF(self):
+        root = "./img/img_"
+        frames = []
+        for f in self.frame_idx:
+            frames.append(imageio.v2.imread(root+str(f)+".png"))
+        if self.mode == 2:
+            f_name = "slam"
+        elif self.mode == 3:
+            f_name == "texture"
+        # Save the gif file
+        imageio.mimsave('./img/result_'+f_name+'.gif', # output gif
+                        frames,               # array of input frames
+                        duration=200)         # optional: frames per second
 
     def showParticles(self):
         plt.ioff()
