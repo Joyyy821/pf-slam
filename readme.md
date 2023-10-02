@@ -17,6 +17,8 @@ Local Python environment:
 
 Note that the animation speed does not reflect the program executing speed. The program runs significantly slower with 100 particles than with 5 particles.
 
+See the full SLAM results and texture mapping results in [project report](ECE276A_PR2_Report.pdf).
+
 ## Project Hierachy
 
 The submitted `.zip` contains all of files in the `code` folder. `main.py` is the entrance for executing the project. It invokes class methods from `models.py` file which are the implementation for particle filter SLAM and texture mapping. The file `sensors.py` is modified based on the given `load_data.py` file and the RGBD image conversion code snippet from piazza. Both `sensors.py` and `models.py` invoke provided functions from `pr2_utils.py` file.
