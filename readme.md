@@ -11,10 +11,11 @@ Local Python environment:
 
 ## Mapping results
 
-| 5 Particles                                       | 100 Particles                            |
-| ------------------------------------------------- | ---------------------------------------- |
-| ![5 particles](figs/slam_5particles.gif "5 particles") | ![1696209669985](figs/slam_5particles.gif) |
+| 5 Particles                                       | 100 Particles                                           |
+| ------------------------------------------------- | ------------------------------------------------------- |
+| ![5 particles](figs/slam_5particles.gif "5 particles") | ![100 particles](figs/slam_100particles.gif "100 particles") |
 
+Note that the animation speed does not reflect the program executing speed. The program runs significantly slower with 100 particles than with 5 particles.
 
 ## Project Hierachy
 
