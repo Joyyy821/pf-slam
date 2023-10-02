@@ -11,9 +11,9 @@ Local Python environment:
 
 ## Mapping results
 
-| 5 Particles                                    | 100 Particles                                  |
-| ---------------------------------------------- | ---------------------------------------------- |
-| ![1696209664167](image/readme/1696209664167.gif) | ![1696209669985](image/readme/1696209669985.gif) |
+| 5 Particles                                       | 100 Particles                            |
+| ------------------------------------------------- | ---------------------------------------- |
+| ![5 particles](figs/slam_5particles.gif "5 particles") | ![1696209669985](figs/slam_5particles.gif) |
 
 
 ## Project Hierachy
