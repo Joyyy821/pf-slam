@@ -9,6 +9,13 @@ Local Python environment:
 * Python version: 3.10.9
 * Libraries: numpy, matplotlib, opencv-python
 
+## Mapping results
+
+| 5 Particles                                    | 100 Particles                                  |
+| ---------------------------------------------- | ---------------------------------------------- |
+| ![1696209664167](image/readme/1696209664167.gif) | ![1696209669985](image/readme/1696209669985.gif) |
+
+
 ## Project Hierachy
 
 The submitted `.zip` contains all of files in the `code` folder. `main.py` is the entrance for executing the project. It invokes class methods from `models.py` file which are the implementation for particle filter SLAM and texture mapping. The file `sensors.py` is modified based on the given `load_data.py` file and the RGBD image conversion code snippet from piazza. Both `sensors.py` and `models.py` invoke provided functions from `pr2_utils.py` file.
